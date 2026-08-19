@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daily Board</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header>
+        <h1><marquee behavior="alternate">Daily board</marquee></h1>
+    </header>
+    <main id="app"></main>
+ 
+    <h3>Tambah Mata pelajaran</h3>
+    <input id="namaTugas" type="text">
+    <button id="tambah">Tambah</button>
+
+    <h3>daftar tugas</h3>
+    <ul id="daftar-tugas"></ul>
+    <button id="filter-semua">Semua</button>
+    <button id="filter-selesai">Selesai</button>
+    <button id="filter-belum">Belum</button>
+<br>
+    <input id="cari-tugas" type="text" placeholder="Cari tugas...">
+    
+    <br>
+    <hr>
+    <textarea id="isiCatatan"></textarea>
+    <button id="tambahCatatan">Tambah Tugas</button>
+
+    <h3>catatan</h3>
+    <div id="daftar-catatan"></div>
+    <br>
+    <h3>Kutipan </h3>
+    <div id="kutipan-harian"></div>
+
+    <input id="namaKota" type="text">
+    <button id="cariCuaca">Cari Cuaca</button>
+
+    <div id="info-cuaca"></div>
+
+    <div id="status"></div>
+
+    <br>
+
+    <button id="toggle-tema">Dark Mode</button>
+
+    
+    <!-- <script>
+if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(getWeatherData, showError);
+        } else {
+            document.getElementById('location').textContent = "Geolocation tidak didukung";
+        
+            fetchWeather(-6.2088, 106.8456); 
+        }
+
+        function getWeatherData(position) {
+            const lat = position.coords.latitude;
+            const lon = position.coords.longitude;
+            document.getElementById('location').textContent = "Lokasi Anda";
+            fetchWeather(lat, lon);
+        }
+
+        function showError(error) {
+            document.getElementById('location').textContent = "Soreang, Bandung";
+            fetchWeather(-7.0331, 107.5152); 
+        }
+        function fetchWeather(lat, lon) {
+            const url = `https://open-meteo.com{lat}&longitude=${lon}&current_weather=true`;
+
+            fetch(url)
+                .then(response => {
+                    if (!response.ok) throw new Error("Gagal mengambil data");
+                    return response.json();
+                })
+                .then(data => {
+                    const weather = data.current_weather;
+                    // Tampilkan data ke elemen HTML
+                    document.getElementById('temperature').textContent = `${Math.round(weather.temperature)}°C`;
+                    document.getElementById('windspeed').textContent = `Kecepatan Angin: ${weather.windspeed} km/h`;
+                })
+                .catch(err => {
+                    console.error(err);
+                    document.getElementById('temperature').textContent = "Error";
+                });
+        }
+</script> -->
+
+
+
+   <script type="module" src="script.js"></script>
+</body>
+</html>

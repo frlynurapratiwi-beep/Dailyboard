@@ -1,0 +1,128 @@
+body {
+    margin: 0;
+    background-color: #ffebea;
+    color: #560808;
+    font-family: Arial;
+}
+
+header {
+    background-color: #b30900;
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+
+#app {
+    
+    padding: 20px;
+    background-color: #e96262;
+    text-align: center;
+}
+
+button {
+    padding: 7px;
+    margin: 5px;
+    background-color: #b30900;
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
+
+textarea {
+    width: 60%;
+    height: 80px;
+    padding: 7px;
+}
+
+#daftar-tugas {
+    padding: 10px;
+    margin: 5px;
+}
+
+#daftar-tugas li {
+    background-color: white;
+    margin: 5px;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+#daftar-catatan {
+    margin: 5px;
+}
+
+.catatan-item {
+    background-color: white;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 5px;
+}
+
+#kutipan-harian {
+    background-color: white;
+    padding: 10px;
+    margin: 10px;
+}
+
+ .weather-widget {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #00c6ff, #0072ff);
+            color: white;
+            padding: 20px;
+            border-radius: 15px;
+            width: 280px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+            text-align: center;
+        }
+.weather-widget h3 { margin: 0 0 10px 0; font-size: 1.2rem; }
+.temp { font-size: 3rem; font-weight: bold; margin: 10px 0; }
+.info { font-size: 0.9rem; opacity: 0.9; 
+}
+
+#info-cuaca {
+    background-color: white;
+    padding: 10px;
+    margin: 10px;
+}
+
+.dark-mode {
+    background-color: #222;
+    color: white;
+}
+
+.dark-mode #app {
+    background-color: #333;
+}
+
+.dark-mode header {
+    background-color: #111;
+}
+
+.dark-mode #daftar-tugas li,
+.dark-mode .catatan-item,
+.dark-mode #kutipan-harian,
+.dark-mode #info-cuaca {
+    background-color: #444;
+    color: white;
+}
+
+/* responsive mobile*/
+@media (max-width: 600px) {
+    body {
+        padding: 10px;
+    }
+
+    #app {
+        width: 100%;
+    }
+
+    input,
+    textarea,
+    button {
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+
+    li {
+        word-break: break-word;
+    }
+}
