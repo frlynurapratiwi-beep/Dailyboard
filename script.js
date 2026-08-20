@@ -296,7 +296,7 @@ const tombolCuaca = document.getElementById("cariCuaca");
 tombolCuaca.addEventListener("click", async()=>{
     try{
         document.getElementById("info-cuaca").textContent="Memuat cuaca...";
-        
+
         const data=await ambilCuacaModul(inputKota.value);
 
         document.getElementById("info-cuaca").innerHTML=`<p>${data.nama}:${data.suhu}°C</p>`;
