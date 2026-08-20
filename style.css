@@ -1,31 +1,43 @@
 body {
-    margin: 0;
-    background-color: #ffebea;
-    color: #560808;
+    margin: 10px;
+    background-color: #ffffff;
+    color: #050429;
     font-family: Arial;
+    border-radius: 15px;
 }
 
 header {
-    background-color: #b30900;
+    background-color: #0054b3;
     color: white;
     text-align: center;
     padding: 20px;
+    border-radius: 5px;
 }
 
 #app {
-    
+    border-radius: 5px;
     padding: 20px;
-    background-color: #e96262;
+    background-color: #dfd8ff;
     text-align: center;
 }
 
 button {
     padding: 7px;
     margin: 5px;
-    background-color: #b30900;
+    background-color: #0300b3;
     color: white;
     border: none;
     border-radius: 5px;
+}
+
+table{
+    width: 100%;
+    border-radius: 5px;
+    border-color: white;
+}
+td{
+    border-radius: 5px;
+    background-color: rgb(232, 232, 255);
 }
 
 textarea {
@@ -40,7 +52,7 @@ textarea {
 }
 
 #daftar-tugas li {
-    background-color: white;
+    background-color:  white;    
     margin: 5px;
     padding: 5px;
     border-radius: 5px;
@@ -68,7 +80,7 @@ textarea {
             background: linear-gradient(135deg, #00c6ff, #0072ff);
             color: white;
             padding: 20px;
-            border-radius: 15px;
+            border-radius: 5px;
             width: 280px;
             box-shadow: 0 8px 16px rgba(0,0,0,0.2);
             text-align: center;
@@ -82,6 +94,7 @@ textarea {
     background-color: white;
     padding: 10px;
     margin: 10px;
+    border-radius: 5px;
 }
 
 .dark-mode {
@@ -93,8 +106,20 @@ textarea {
     background-color: #333;
 }
 
+
+.dark-mode table{
+    width: 100%;
+    border-radius: 5px;
+    border-color: rgb(68, 66, 66);
+}
+
+.dark-mode td{
+    border-radius: 5px;
+    background-color: rgb(50, 50, 51);
+}
 .dark-mode header {
     background-color: #111;
+    color: white;
 }
 
 .dark-mode #daftar-tugas li,
@@ -105,6 +130,12 @@ textarea {
     color: white;
 }
 
+.dark-mode button {
+    background-color: #ffffff;
+    color: rgb(0, 0, 0);
+    border: none;
+    border-radius: 5px;
+}
 /* responsive mobile*/
 @media (max-width: 600px) {
     body {

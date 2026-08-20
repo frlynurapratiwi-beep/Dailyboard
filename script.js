@@ -74,13 +74,6 @@ let daftarTugas = [
 //5-tambah dan hapus tugas
 let nextId = 1;
 
-/*function tambahTugas(nama) {
-    daftarTugas.push({id: nextId++, nama: nama, selesai: false
-    });
-    simpanKeStorage();
-    renderTugas();
-}*/
-
 function tambahTugas(nama){
     daftarTugas=tambahTugasModul(daftarTugas, nama);
     simpanKeStorage();
@@ -101,26 +94,9 @@ tombolTambah.addEventListener("click", () => {
     input.value = "";
 });
 
-/*
-function hapusTugas(id) {
-    daftarTugas = daftarTugas.filter((t) => t.id !== id);
-    simpanKeStorage();
-    renderTugas();
-}*/
 
 
 //6-tandai selesai dan filter tugas
-/*
-function toggleSelesai(id){
-    daftarTugas = daftarTugas.map((t) =>
-    t.id===id?{...t, selesai: !t.selesai} :t
-);
-simpanKeStorage();
-renderTugas();
-
-}
-*/
-
 
 function toggleSelesai(id){
     daftarTugas=toggleSelesaiModul(daftarTugas, id);
@@ -193,25 +169,11 @@ function renderTugas(filter="semua"){
 
 
 //7-menyimpan data ke localStorage
-/*
-function simpanKeStorage(){
-    localStorage.setItem("daftarTugas", JSON.stringify(daftarTugas));
-}
-*/
 
 function simpanKeStorage(){
     simpanData("daftarTugas", daftarTugas);
 }
 
-/*
-function muatDariStorage(){
-    const data=localStorage.getItem("daftarTugas");
-    
-    if(data){
-        daftarTugas=JSON.parse(data);
-    }
-}
-    */
    function muatDariStorage(){
     const data = ambilData("daftarTugas");
 
@@ -230,30 +192,10 @@ renderTugas();
 //8-fitur catatan cepat(notes)
 let daftarCatatan=[];
 
-/*
-function simpanCatatanKeStorage(){
-    localStorage.setItem(
-        "daftarCatatan",
-        JSON.stringify(daftarCatatan)
-    );
-}
-    */
-
 
 function simpanCatatanKeStorage(){
     simpanData("daftarCatatan", daftarCatatan);
 }
-
-/*
-
-function muatCatatanDariStorage(){
-    const data = localStorage.getItem("daftarCatatan");
-
-    if(data){
-        daftarCatatan = JSON.parse(data);
-    }
-}*/
-
 
 function muatCatatanDariStorage(){
     const data= ambilData("daftarCatatan");
@@ -263,17 +205,6 @@ function muatCatatanDariStorage(){
     }
 }
 
-/*
-function tambahCatatan(isi){
-    daftarCatatan.push({
-        id:Date.now(),
-        isi,
-        tanggal:new Date().toLocaleDateString()
-    });
-    simpanCatatanKeStorage();
-    renderCatatan();
-}
-    */
 
 
 function tambahCatatan(isi){
@@ -289,12 +220,26 @@ function renderCatatan(){
     daftarCatatan.forEach((catatan) => {
         const div=document.createElement("div");
         div.className="catatan-item";
-        div.innerHTML= `<p>${catatan.isi}</p><small>${catatan.tanggal}</small>`;
+        div.innerHTML= `<p>${catatan.isi}</p><small>${catatan.tanggal}</small>
+        <button class="hapus-catatan">Hapus</button>`;
+
+        const tombolHapus=div.querySelector(".hapus-catatan");
+
+        tombolHapus.addEventListener("click", ()=>{
+            daftarCatatan=daftarCatatan.filter(
+                (item)=>item!==catatan
+            );
+
+            simpanCatatanKeStorage();
+            renderCatatan();
+        });
+                        
         container.appendChild(div);
     });
-
+}
     const textarea = document.getElementById("isiCatatan");
     const tombolCatatan = document.getElementById("tambahCatatan");
+    
 
     tombolCatatan.addEventListener("click", () => {
         daftarCatatan = tambahCatatanModul(
@@ -305,20 +250,12 @@ simpanCatatanKeStorage();
 renderCatatan();
         textarea.value = "";
     });
-}
+
 
 muatCatatanDariStorage();
 renderCatatan();
 
 //9-edit data dan validasi input
-/*
-function editTugas(id, namaBaru){
-    daftarTugas=daftarTugas.map((t)=>
-    t.id === id ? {...t, nama: namaBaru}: t);
-    simpanKeStorage();
-    renderTugas();
-}
-    */
    
 function editTugas(id, namaBaru){
     daftarTugas=editTugasModul(daftarTugas, id, namaBaru);
@@ -338,21 +275,6 @@ function validasiInput(nilai){
     return true;
 }
 
-//10-fetch API dasar dan async/await
-
-/*
-async function ambilKutipan() {
-    try{
-        const res=await fetch(`https://motivational-spark-api.vercel.app/api/quotes/random`);
-        const data=await res.json();
-
-        document.getElementById("kutipan-harian").innerHTML = data.quote + " - " + data.author;
-        
-    }catch (error){
-        console.error("gagal mengambil kutipan:", error);
-    }
-}
-    */
    async function tampilkanKutipan(){
     try {
         const kutipan = await ambilKutipanModul();
@@ -367,32 +289,14 @@ tampilkanKutipan();
 
 
 //11-widget cuaca dengan geocoding-API
-/*
-async function ambilCuaca(kota) {
-
-    const apiKey = "80ecf0e40b154ad47a82599fd0110339";
-        const url = `https://api.openweathermap.org/data/2.5/weather?q=${kota}&appid=${apiKey}&units=metric`;
-
-        try {
-            const res = await fetch (url);
-            if(!res.ok) throw new Error("Kota tidak ditemukan");
-            const data = await res.json();
-
-            document.getElementById("info-cuaca").innerHTML = `
-            <p>${data.name}: ${data.main.temp}C</P>
-            <p>${data.weather[0].description}</p>
-            `;
-        } catch (error) {
-            document.getElementById("info-cuaca").textContent = error.message;
-        }
-    }
-    */
 
 const inputKota = document.getElementById("namaKota");
 const tombolCuaca = document.getElementById("cariCuaca");
 
 tombolCuaca.addEventListener("click", async()=>{
     try{
+        document.getElementById("info-cuaca").textContent="Memuat cuaca...";
+        
         const data=await ambilCuacaModul(inputKota.value);
 
         document.getElementById("info-cuaca").innerHTML=`<p>${data.nama}:${data.suhu}°C</p>`;
@@ -402,17 +306,6 @@ tombolCuaca.addEventListener("click", async()=>{
 });
 
 //12-menggabungkan beberapa sumber data
-/*
-async function muatSemuaWidget() {
-  document.getElementById("status").textContent = "Memuat data...";
-
-  await Promise.all([tampilkanKutipan(), ambilCuacaModul("Jakarta")]);
-
-  document.getElementById("status").textContent = "Data cuaca berhasil dimuat";
-}
-*/
-
-
 
 async function muatSemuaWidget() {
   document.getElementById("status").textContent = "Memuat data...";
@@ -435,6 +328,7 @@ async function muatSemuaWidget() {
 }
 
 window.addEventListener("DOMContentLoaded", muatSemuaWidget);
+
 //13-drag and drop untuk urutan tugas
 function aktifkanDragDropBaru() {
     const list = document.getElementById("daftar-tugas");
@@ -552,48 +446,15 @@ toggleTema.addEventListener("click", () => {
     );
 });
 
-// Menerapkan tema yang tersimpan
+// Menerapkan tema
 window.addEventListener("DOMContentLoaded", () => {
     if (localStorage.getItem("tema") === "gelap") {
         document.body.classList.add("dark-mode");
     }
 });
 
-// Pencarian tugas
 
-/*
-document.getElementById("cari-tugas").addEventListener("input", (e) => {
-    const kataKunci = e.target.value.toLowerCase();
-    const hasil = daftarTugas.filter((tugas) =>
-        tugas.nama.toLowerCase().includes(kataKunci)
-    );
-    const list = document.getElementById("daftar-tugas");
-    list.innerHTML = "";
-    hasil.forEach((tugas) => {
-        const li = document.createElement("li");
-        li.draggable=true;
-        li.textContent = tugas.nama;
-
-        
-        li.style.textDecoration =
-            tugas.selesai ? "line-through" : "none";
-
-        
-        li.addEventListener("click", () => {
-            toggleSelesai(tugas.id);
-        });
-        
-        li.addEventListener("dblclick", () => {
-            const namaBaru = prompt(
-                "Masukkan nama tugas baru:",
-                tugas.nama
-            );
-
-            if (namaBaru !== null && validasiInput(namaBaru)) {
-                editTugas(tugas.id, namaBaru);
-            }
-        });
-
-        list.appendChild(li);
-    });
-});*/
+const tombolRefresh=document.getElementById("refresh-kutipan");
+    tombolRefresh.addEventListener("click", ()=>{
+    location.reload();
+})

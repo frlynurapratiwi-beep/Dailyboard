@@ -8,12 +8,16 @@
 </head>
 
 <body>
+  
     <header>
         <h1><marquee behavior="alternate">Daily board</marquee></h1>
     </header>
     <main id="app"></main>
- 
-    <h3>Tambah Mata pelajaran</h3>
+
+   <table border="1" cellspacing="5">
+    <tr>
+        <td width="50%">
+    <h3>Tambah tugas</h3>
     <input id="namaTugas" type="text">
     <button id="tambah">Tambah</button>
 
@@ -24,71 +28,46 @@
     <button id="filter-belum">Belum</button>
 <br>
     <input id="cari-tugas" type="text" placeholder="Cari tugas...">
-    
-    <br>
-    <hr>
+        </td>
+   
+        <td width="50%">
+    <h3>Tambah Catatan</h3>
     <textarea id="isiCatatan"></textarea>
-    <button id="tambahCatatan">Tambah Tugas</button>
+    <button id="tambahCatatan">Tambah Catatan</button>
 
-    <h3>catatan</h3>
+    <h3>Daftar catatan</h3>
     <div id="daftar-catatan"></div>
-    <br>
+        </td>
+    </tr>
+</table>
+
+<table border="1" cellspacing="2">
+    <tr>
+        <td width="50%">
     <h3>Kutipan </h3>
     <div id="kutipan-harian"></div>
+    <button id="refresh-kutipan">Refresh</button>
+        </td>
 
-    <input id="namaKota" type="text">
-    <button id="cariCuaca">Cari Cuaca</button>
-
+        
+   
+    <td width="50%">
     <div id="info-cuaca"></div>
 
     <div id="status"></div>
-
-    <br>
-
-    <button id="toggle-tema">Dark Mode</button>
-
     
-    <!-- <script>
-if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(getWeatherData, showError);
-        } else {
-            document.getElementById('location').textContent = "Geolocation tidak didukung";
+    
+    <input id="namaKota" type="text">
+    <button id="cariCuaca">Cari Cuaca</button>
+        </td>
+    </tr>
+    </table>
+
+    <center>
         
-            fetchWeather(-6.2088, 106.8456); 
-        }
-
-        function getWeatherData(position) {
-            const lat = position.coords.latitude;
-            const lon = position.coords.longitude;
-            document.getElementById('location').textContent = "Lokasi Anda";
-            fetchWeather(lat, lon);
-        }
-
-        function showError(error) {
-            document.getElementById('location').textContent = "Soreang, Bandung";
-            fetchWeather(-7.0331, 107.5152); 
-        }
-        function fetchWeather(lat, lon) {
-            const url = `https://open-meteo.com{lat}&longitude=${lon}&current_weather=true`;
-
-            fetch(url)
-                .then(response => {
-                    if (!response.ok) throw new Error("Gagal mengambil data");
-                    return response.json();
-                })
-                .then(data => {
-                    const weather = data.current_weather;
-                    // Tampilkan data ke elemen HTML
-                    document.getElementById('temperature').textContent = `${Math.round(weather.temperature)}°C`;
-                    document.getElementById('windspeed').textContent = `Kecepatan Angin: ${weather.windspeed} km/h`;
-                })
-                .catch(err => {
-                    console.error(err);
-                    document.getElementById('temperature').textContent = "Error";
-                });
-        }
-</script> -->
-
+    <button id="toggle-tema">Dark Mode</button>
+      
+    </center>
 
 
    <script type="module" src="script.js"></script>
